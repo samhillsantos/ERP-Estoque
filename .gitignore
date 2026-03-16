@@ -1,0 +1,10 @@
+# IDE - Configurações de ambiente pessoal
+*.code-workspace
+.vscode/
+
+# JAVA - Binários compilados (Não versionar o que é gerado)
+*.class
+
+# OS - Lixo do sistema
+Thumbs.db
+.DS_Store
