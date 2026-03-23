@@ -22,6 +22,23 @@ O planejamento detalhado, incluindo a escolha de estruturas de dados como `HashM
 ## 🔧 Como Executar (Modo Manual)
 Para manter o projeto sem excessos (No Bloat), a execução é feita via terminal:
 
-1. **Compile o projeto:**
+1. **Compile o projeto (na raiz do projeto):**
    ```powershell
-   javac menu/Menu.java
+   javac menu/Menu.java produtos/Galpoes.java
+   ```
+
+2. **Execute o projeto:**
+   ```powershell
+   java menu.Menu
+   ```
+
+## Funcionalidades Implementadas (Java)
+- [x] Criacao (Create): Cadastro de Galpões com ID autoincrementado.
+- [x] Persistencia em Memoria: Uso de HashMap para busca instantanea (O(1)).
+- [x] Integridade de Dados: Construtores que impedem a criacao de objetos vazios.
+- [x] Interface CLI: Menu interativo via terminal.
+
+## Proximos Passos
+1. Implementar as funcoes de Listagem (Read), Edicao (Update) e Remocao (Delete).
+2. Criar a camada de Armazem para estabelecer a hierarquia fisica.
+3. Desenvolver scripts Python para geracao automatica de SKUs para teste de carga.

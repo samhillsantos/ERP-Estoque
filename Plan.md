@@ -17,4 +17,5 @@
 * **Java**
     <!-- Pastas -->
   * **(Menu.java):** Utiliza `HashMap` (Busca $O(1)$) para reduzir overhead de CPU.
-  * **(Galpoes.java):** Implementar um objeto utilizando `class` para fixar os dados no sistema.
+  * **(Galpoes.java):** Modelagem de Entidade (POO) para estruturação de dados e formatação de saída para auditoria via `toString`.
+  * **(POO):** Implementação de Construtores e `toString` para garantir a integridade dos dados e facilitar o rastreio (Log) no terminal.
