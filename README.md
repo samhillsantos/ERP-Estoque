@@ -1,44 +1,61 @@
 # ERP-Estoque
 
-Sistema de gerenciamento de estoque desenvolvido com foco em arquitetura escalável, transicionando de uma lógica **Vanilla** para uma **Arquitetura Orientada a Serviços (SOA)**.
+**Descrição:** Um sistema de gerenciamento de estoque desenvolvido em Java. O projeto foca na manipulação manual de estruturas e fundamentos de programação (sem uso de frameworks), alinhado com um perfil de aprendizado voltado para Backend de baixo nível e SRE.
 
-> **Status do Projeto:** Em desenvolvimento (Fase: Protótipo Funcional em Java)
+## Stack e Motivação
+| Componente | Tecnologia | Propósito |
+| :--- | :--- | :--- |
+| Core (Lógica e CLI) | Java Puro | Robustez e aprendizado focado na base da linguagem, sem abstrações excessivas. |
 
 ---
 
-## Visão Geral
-Este projeto nasceu da necessidade de aplicar conceitos de **SRE (Site Reliability Engineering)** e **Engenharia de Software** em um cenário real de logística. O sistema é poliglota, utilizando cada linguagem para o que ela possui de melhor: **Java** para a robustez do núcleo
+## Roadmap (Evolução do Projeto)
 
-## Arquitetura e Decisões Técnicas
-O planejamento detalhado, incluindo a escolha de estruturas de dados como `HashMap` (para busca $O(1)$) e o roadmap de evolução para SQL e Rust, pode ser encontrado no nosso documento oficial de design:
+Este projeto foi desenhado com uma visão clara de evolução de arquitetura e aprendizado:
 
->[**Acesse o Plan.md aqui**](./Plan.md)
+- **Fase 1 (Atual) - Prova de Conceito (PoC) em CLI:** Construção da lógica de negócio e manipulação de estruturas em Java puro, garantindo total entendimento dos fundamentos de orientação a objetos sem depender de "caixas pretas" de frameworks.
+- **Fase 2 (Futuro) - Migração para Spring Boot:** Evolução da aplicação para uma API RESTful completa. Tendo a base estrutural muito sólida criada na Fase 1, a adoção do Spring servirá estritamente como ferramenta de produtividade e escalabilidade para o ecossistema web.
 
-## 🛠️ Stack Tecnológica (Fase Atual)
-* **Linguagem Principal:** Java 25 (OpenJDK Temurin)
-* **Estrutura de Dados:** HashMaps para alta performance de busca.
-* **Ambiente:** Desenvolvimento via CLI (terminal puro) e VS Code para controle total de dependências.
+---
 
-## 🔧 Como Executar (Modo Manual)
-Para manter o projeto sem excessos (No Bloat), a execução é feita via terminal:
+## Estrutura do Projeto
+```text
+ERP-Estoque/
+├── menu/
+│   └── Menu.java
+└── objetos/
+    ├── Galpoes.java
+    └── Produtos.java
+```
 
-1. **Compile o projeto (na raiz do projeto):**
-   ```powershell
-   javac menu/Menu.java produtos/Galpoes.java
-   ```
+## Classes e Implementação Técnica
 
-2. **Execute o projeto:**
-   ```powershell
-   java menu.Menu
-   ```
+### 1. `menu/Menu.java`
+**Descrição:** É a classe principal (`main`) do sistema. É responsável por exibir a interface de linha de comando (CLI) para o usuário, mapeando as opções e orquestrando as chamadas aos objetos de negócio.
+- Instancia e manipula `Galpoes` e `Produtos`.
 
-## Funcionalidades Implementadas (Java)
-- [x] Criacao (Create): Cadastro de Galpões com ID autoincrementado.
-- [x] Persistencia em Memoria: Uso de HashMap para busca instantanea (O(1)).
-- [x] Integridade de Dados: Construtores que impedem a criacao de objetos vazios.
-- [x] Interface CLI: Menu interativo via terminal.
+### 2. `objetos/Galpoes.java`
+**Descrição:** Modela a entidade de um galpão. 
+- Contém atributos como ID e Nome.
+- Gerencia internamente o estoque de produtos associados a esse galpão específico.
 
-## Proximos Passos
-1. Implementar as funcoes de Listagem (Read), Edicao (Update) e Remocao (Delete).
-2. Criar a camada de Armazem para estabelecer a hierarquia fisica.
-3. Desenvolver scripts Python para geracao automatica de SKUs para teste de carga.
+### 3. `objetos/Produtos.java`
+**Descrição:** Modela a entidade de um produto.
+- Mantém dados como ID, Nome e Preço.
+- Realiza validações de negócio, como a verificação contra preços negativos.
+
+---
+
+## Compilação e Execução
+
+Como o projeto foca nos fundamentos, a compilação e execução são feitas diretamente via terminal, sem a necessidade de ferramentas de build como Maven ou Gradle.
+
+**1. Compilar os arquivos:**
+```bash
+javac objetos/Galpoes.java objetos/Produtos.java menu/Menu.java
+```
+
+**2. Executar o sistema:**
+```bash
+java menu.Menu
+```
